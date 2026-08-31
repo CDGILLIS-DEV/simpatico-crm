@@ -85,6 +85,9 @@ public class LeadServiceImpl implements LeadService {
      */
     private Specification<Lead> buildSpecification(LeadSearchCriteria criteria) {
         return (root, query, cb) -> {
+            if (Long.class != query.getResultType() && long.class != query.getResultType()) {
+                root.fetch("buyer", jakarta.persistence.criteria.JoinType.LEFT);
+            }
             List<Predicate> predicates = new ArrayList<>();
 
             if (criteria.getStatus() != null) {

@@ -21,6 +21,10 @@ public interface LeadRepository extends JpaRepository<Lead, UUID>, JpaSpecificat
      * @param buyerId the unique ID of the buyer.
      * @return a List of associated Leads.
      */
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"buyer"})
+    java.util.Optional<Lead> findById(UUID id);
+
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"buyer"})
     List<Lead> findByBuyerId(UUID buyerId);
 
     /**
@@ -29,5 +33,6 @@ public interface LeadRepository extends JpaRepository<Lead, UUID>, JpaSpecificat
      * @param status the status to query.
      * @return a List of Leads matching the status.
      */
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"buyer"})
     List<Lead> findByStatus(LeadStatus status);
 }

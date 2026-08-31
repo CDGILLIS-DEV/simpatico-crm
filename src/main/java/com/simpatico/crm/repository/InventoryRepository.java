@@ -12,4 +12,7 @@ import java.util.UUID;
  */
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory, UUID>, JpaSpecificationExecutor<Inventory> {
+
+    @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"supplier"})
+    java.util.Optional<Inventory> findById(UUID id);
 }

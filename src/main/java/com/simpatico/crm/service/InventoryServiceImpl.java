@@ -83,6 +83,9 @@ public class InventoryServiceImpl implements InventoryService {
      */
     private Specification<Inventory> buildSpecification(InventorySearchCriteria criteria) {
         return (root, query, cb) -> {
+            if (Long.class != query.getResultType() && long.class != query.getResultType()) {
+                root.fetch("supplier", jakarta.persistence.criteria.JoinType.LEFT);
+            }
             List<Predicate> predicates = new ArrayList<>();
 
             if (criteria.getCategory() != null && !criteria.getCategory().isBlank()) {
