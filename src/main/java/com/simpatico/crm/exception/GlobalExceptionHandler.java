@@ -22,6 +22,22 @@ import java.util.stream.Collectors;
 public class GlobalExceptionHandler {
 
     /**
+     * Handles custom spam/honeypot detection exceptions (returns HTTP 400).
+     */
+    @ExceptionHandler(SpamDetectedException.class)
+    public ResponseEntity<ErrorResponse> handleSpamDetected(SpamDetectedException ex, HttpServletRequest request) {
+        ErrorResponse response = new ErrorResponse(
+                OffsetDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI(),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    /**
      * Handles custom resource-not-found exceptions (returns HTTP 404).
      */
     @ExceptionHandler(ResourceNotFoundException.class)

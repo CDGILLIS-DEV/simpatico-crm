@@ -19,3 +19,10 @@ spring:
 
 server:
   port: 8080
+
+app:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000}
+  rate-limiting:
+    enabled: ${RATE_LIMITING_ENABLED:true}
+    requests-per-minute: ${RATE_LIMITING_LIMIT:10}
