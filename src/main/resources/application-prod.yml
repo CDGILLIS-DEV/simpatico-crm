@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    # Strictly require environment variables in production, with no defaults
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    hibernate:
+      # Enforce validation against Flyway migrations; auto-generation is strictly forbidden in production
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+  # Constraint limits to block oversized request payloads (DoS protection)
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
+server:
+  max-http-request-header-size: 16KB
+  servlet:
+    session:
+      cookie:
+        # Prevent client-side scripts from reading authentication session cookies (XSS mitigation)
+        http-only: true
+        # Enforce cookie delivery over SSL/TLS channels only (MITM mitigation)
+        secure: true
+
+# Logging safety guidelines - do not print SQL parameter bindings containing PII or tokens
+logging:
+  level:
+    org:
+      springframework:
+        web: WARN
+        security: INFO
+      hibernate:
+        SQL: WARN
+        type:
+          descriptor:
+            sql:
+              BasicBinder: WARN

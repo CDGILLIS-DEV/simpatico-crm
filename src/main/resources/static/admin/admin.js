@@ -23,6 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('inventoryConditionFilter').addEventListener('input', debounce(loadInventory, 350));
 });
 
+// CSRF helpers for secure AJAX state modifications
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+function getCsrfHeaders() {
+    const token = getCookie('XSRF-TOKEN');
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) {
+        headers['X-XSRF-TOKEN'] = token;
+    }
+    return headers;
+}
+
 // Navigation state helper
 function switchTab(tabId) {
     // Toggle active classes on sidebar
@@ -466,7 +483,7 @@ async function saveLeadStatus(leadId) {
     try {
         const res = await fetch(`/api/leads/${leadId}/status`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            headers: getCsrfHeaders(),
             body: JSON.stringify({ status })
         });
         if (res.ok) {
@@ -486,7 +503,8 @@ async function runMatchEngine(leadId) {
     
     try {
         const res = await fetch(`/api/leads/${leadId}/matches/generate`, {
-            method: 'POST'
+            method: 'POST',
+            headers: getCsrfHeaders()
         });
         const generatedMatches = await res.json();
         
@@ -656,7 +674,7 @@ async function saveMatchStatus(matchId) {
     try {
         const res = await fetch(`/api/matches/${matchId}/status`, {
             method: 'PATCH',
-            headers: { 'Content-Type': 'application/json' },
+            headers: getCsrfHeaders(),
             body: JSON.stringify({ status, notes })
         });
         if (res.ok) {
