@@ -1,7 +1,7 @@
 spring:
   datasource:
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/simpatico_crm}
-    username: ${SPRING_DATASOURCE_USERNAME:postgres}
+    username: ${SPRING_DATASOURCE_USERNAME:darnell}
     password: ${SPRING_DATASOURCE_PASSWORD:postgres}
   jpa:
     hibernate:
