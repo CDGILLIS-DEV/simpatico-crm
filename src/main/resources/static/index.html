@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpatico Liquidations - Wholesale Inventory Request</title>
+    <!-- Modern Google Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --accent-primary: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --input-bg: #1f2937;
+            --success-color: #10b981;
+            --error-color: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), #6366f1);
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        input, select, textarea {
+            background-color: var(--input-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.2s ease-in-out;
+            outline: none;
+            width: 100%;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Hidden Honeypot Field for Spam Protection */
+        .hidden-honeypot {
+            display: none !important;
+            visibility: hidden !important;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+        }
+
+        button[type="submit"]:hover {
+            opacity: 0.95;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }
+
+        .status-message {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+        }
+
+        .status-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            display: block;
+        }
+
+        .status-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--error-color);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            display: block;
+        }
+
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--accent-primary);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Simpatico Liquidations</h1>
+        <p>Submit your inventory requirements. Our matching team will connect you with available liquidation inventory packages matching your price constraints and locations.</p>
+    </header>
+
+    <div class="container">
+        <form id="publicLeadForm">
+            <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" required maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company Name</label>
+                <input type="text" id="company" name="company" maxlength="150">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="text" id="phone" name="phone" required placeholder="+15551234567">
+            </div>
+
+            <div class="form-group">
+                <label for="location">Your Location *</label>
+                <input type="text" id="location" name="location" required placeholder="e.g. New York, NY" maxlength="200">
+            </div>
+
+            <div class="form-group">
+                <label for="inventoryCategory">Target Category *</label>
+                <input type="text" id="inventoryCategory" name="inventoryCategory" required placeholder="e.g. ELECTRONICS, CLOTHING" maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="inventoryCondition">Condition Requirement *</label>
+                <input type="text" id="inventoryCondition" name="inventoryCondition" required placeholder="e.g. RETURNS, NEW, USED" maxlength="100">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Target Quantity *</label>
+                <input type="number" id="quantity" name="quantity" required min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="budget">Maximum Budget ($) *</label>
+                <input type="number" id="budget" name="budget" required min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="purchaseFrequency">Purchase Frequency *</label>
+                <select id="purchaseFrequency" name="purchaseFrequency" required>
+                    <option value="ONE_TIME">One Time Purchase</option>
+                    <option value="WEEKLY">Weekly Purchases</option>
+                    <option value="MONTHLY">Monthly Purchases</option>
+                    <option value="ONGOING">Ongoing Contract</option>
+                </select>
+            </div>
+
+            <!-- Honeypot field (hidden from users, bot traps) -->
+            <div class="form-group hidden-honeypot">
+                <label for="faxNumber">Fax Number</label>
+                <input type="text" id="faxNumber" name="faxNumber" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form-group full-width">
+                <label for="additionalRequirements">Additional Requirements & Notes</label>
+                <textarea id="additionalRequirements" name="additionalRequirements" placeholder="Describe any brand restrictions, package size limits, or delivery instructions..."></textarea>
+            </div>
+
+            <button type="submit" class="full-width">Submit Wholesale Request</button>
+        </form>
+
+        <div id="statusMessage" class="status-message"></div>
+    </div>
+
+    <footer>
+        <p>Secured Administrative Interface: <a href="/admin/index.html">CRM Login</a></p>
+    </footer>
+
+    <script>
+        document.getElementById('publicLeadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = 'status-message';
+            statusDiv.style.display = 'none';
+
+            const payload = {
+                firstName: document.getElementById('firstName').value.trim(),
+                lastName: document.getElementById('lastName').value.trim(),
+                company: document.getElementById('company').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                location: document.getElementById('location').value.trim(),
+                inventoryCategory: document.getElementById('inventoryCategory').value.trim(),
+                inventoryCondition: document.getElementById('inventoryCondition').value.trim(),
+                quantity: parseInt(document.getElementById('quantity').value, 10),
+                budget: parseFloat(document.getElementById('budget').value),
+                purchaseFrequency: document.getElementById('purchaseFrequency').value,
+                additionalRequirements: document.getElementById('additionalRequirements').value.trim(),
+                faxNumber: document.getElementById('faxNumber').value.trim() // Honeypot
+            };
+
+            try {
+                const response = await fetch('/api/public/leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusDiv.className = 'status-message success';
+                    statusDiv.innerText = 'Request submitted successfully! Our matching team has received your wholesale requirements.';
+                    document.getElementById('publicLeadForm').reset();
+                } else {
+                    statusDiv.className = 'status-message error';
+                    statusDiv.innerText = data.message || 'Validation failed. Please verify your fields and submit again.';
+                }
+            } catch (err) {
+                statusDiv.className = 'status-message error';
+                statusDiv.innerText = 'Network error occurred. Please check your connection and try again.';
+            }
+        });
+    </script>
+</body>
+</html>

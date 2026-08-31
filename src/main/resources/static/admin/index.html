@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simpatico CRM - Admin Dashboard</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Security Alert Header -->
+    <div class="security-alert-bar">
+        <span><strong>[ADMIN MODE]</strong> Unauthenticated Sandbox: Security authentication/authorization rules will be configured in the next phase.</span>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <span class="logo-icon">S</span>
+                <h2>Simpatico CRM</h2>
+            </div>
+            <nav class="menu">
+                <button class="menu-item active" data-tab="dashboard">
+                    <span class="menu-icon">📊</span> Overview
+                </button>
+                <button class="menu-item" data-tab="leads">
+                    <span class="menu-icon">🎯</span> Leads Management
+                </button>
+                <button class="menu-item" data-tab="buyers">
+                    <span class="menu-icon">👥</span> Buyers Directory
+                </button>
+                <button class="menu-item" data-tab="suppliers">
+                    <span class="menu-icon">🏭</span> Suppliers Registry
+                </button>
+                <button class="menu-item" data-tab="inventory">
+                    <span class="menu-icon">📦</span> Inventory Catalog
+                </button>
+                <button class="menu-item" data-tab="matches">
+                    <span class="menu-icon">🤝</span> Matched Pairs
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="/index.html" class="public-link">← Public Site</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            
+            <!-- Tab: Dashboard -->
+            <section id="tab-dashboard" class="tab-content active">
+                <div class="tab-header">
+                    <h1>Overview Dashboard</h1>
+                    <p>Metrics summaries and recent lead entries.</p>
+                </div>
+
+                <!-- Status Metric Grid -->
+                <div class="metrics-grid" id="dashboardMetrics">
+                    <div class="metric-card">
+                        <h3>NEW</h3>
+                        <div class="value" id="count-NEW">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>CONTACTED</h3>
+                        <div class="value" id="count-CONTACTED">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>QUALIFIED</h3>
+                        <div class="value" id="count-QUALIFIED">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>MATCHING</h3>
+                        <div class="value" id="count-MATCHING">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>MATCHED</h3>
+                        <div class="value" id="count-MATCHED">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>PURCHASED</h3>
+                        <div class="value" id="count-PURCHASED">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <h3>LOST</h3>
+                        <div class="value" id="count-LOST">-</div>
+                    </div>
+                </div>
+
+                <!-- Recent Leads Section -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2>Recent Leads</h2>
+                        <button class="btn btn-primary" onclick="switchTab('leads')">View All Leads</button>
+                    </div>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Buyer Name</th>
+                                    <th>Category</th>
+                                    <th>Condition</th>
+                                    <th>Budget</th>
+                                    <th>Date Submitted</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentLeadsTable">
+                                <tr><td colspan="6" class="placeholder-row">Loading recent leads...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab: Leads -->
+            <section id="tab-leads" class="tab-content">
+                <div class="tab-header">
+                    <h1>Leads Management</h1>
+                    <p>Track purchasing requirements, match buyers with liquidation packages, and qualify accounts.</p>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="search-input">
+                        <input type="text" id="leadSearch" placeholder="Search by Buyer Name or Company...">
+                    </div>
+                    <div class="select-input">
+                        <select id="leadStatusFilter">
+                            <option value="">All Statuses</option>
+                            <option value="NEW">NEW</option>
+                            <option value="CONTACTED">CONTACTED</option>
+                            <option value="QUALIFIED">QUALIFIED</option>
+                            <option value="MATCHING">MATCHING</option>
+                            <option value="MATCHED">MATCHED</option>
+                            <option value="NEGOTIATING">NEGOTIATING</option>
+                            <option value="PURCHASED">PURCHASED</option>
+                            <option value="LOST">LOST</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Buyer Name</th>
+                                <th>Company</th>
+                                <th>Category</th>
+                                <th>Condition</th>
+                                <th>Budget</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leadsTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab: Buyers -->
+            <section id="tab-buyers" class="tab-content">
+                <div class="tab-header">
+                    <h1>Buyers Directory</h1>
+                    <p>Wholesale liquidation accounts and active profiles.</p>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="search-input">
+                        <input type="text" id="buyerSearch" placeholder="Search by First/Last name or Email...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="buyersTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab: Suppliers -->
+            <section id="tab-suppliers" class="tab-content">
+                <div class="tab-header">
+                    <h1>Suppliers Registry</h1>
+                    <p>Liquidation centers, wholesale distributors, and suppliers profiles.</p>
+                </div>
+
+                <div class="filter-bar">
+                    <div class="search-input">
+                        <input type="text" id="supplierSearch" placeholder="Search by Company or Contact name...">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Website</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="suppliersTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab: Inventory -->
+            <section id="tab-inventory" class="tab-content">
+                <div class="tab-header">
+                    <h1>Inventory Catalog</h1>
+                    <p>Available wholesale packages, returns lots, and surplus stocks.</p>
+                </div>
+
+                <div class="filter-bar multiline">
+                    <div class="search-input">
+                        <input type="text" id="inventorySearch" placeholder="Search by title or description...">
+                    </div>
+                    <div class="select-input">
+                        <input type="text" id="inventoryCategoryFilter" placeholder="Category filter...">
+                    </div>
+                    <div class="select-input">
+                        <input type="text" id="inventoryConditionFilter" placeholder="Condition filter...">
+                    </div>
+                    <div class="select-input">
+                        <select id="inventoryStatusFilter">
+                            <option value="">All Statuses</option>
+                            <option value="AVAILABLE">AVAILABLE</option>
+                            <option value="RESERVED">RESERVED</option>
+                            <option value="SOLD">SOLD</option>
+                            <option value="INACTIVE">INACTIVE</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Offering Title</th>
+                                <th>Supplier</th>
+                                <th>Category</th>
+                                <th>Condition</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Tab: Matches -->
+            <section id="tab-matches" class="tab-content">
+                <div class="tab-header">
+                    <h1>Matched Pairs</h1>
+                    <p>Administrative review registry for proposed matches between Buyer Leads and Supplier Inventory.</p>
+                </div>
+
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Buyer Lead Details</th>
+                                <th>Matched Inventory</th>
+                                <th>Status</th>
+                                <th>Date Matched</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matchesTableBody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal: Lead Details & Match Evaluator -->
+    <div id="leadModal" class="modal">
+        <div class="modal-content large">
+            <span class="close-btn" onclick="closeModal('leadModal')">&times;</span>
+            <h2 class="modal-title">Lead Requirements Profile</h2>
+            
+            <div class="modal-details-grid">
+                <!-- Buyer Details Pane -->
+                <div class="details-card">
+                    <h3>Buyer Contact Information</h3>
+                    <div class="info-row"><strong>Name:</strong> <span id="lead-buyer-name">-</span></div>
+                    <div class="info-row"><strong>Company:</strong> <span id="lead-buyer-company">-</span></div>
+                    <div class="info-row"><strong>Email:</strong> <span id="lead-buyer-email">-</span></div>
+                    <div class="info-row"><strong>Phone:</strong> <span id="lead-buyer-phone">-</span></div>
+                </div>
+
+                <!-- Requirements Pane -->
+                <div class="details-card">
+                    <h3>Purchasing Specifications</h3>
+                    <div class="info-row"><strong>Category:</strong> <span id="lead-category">-</span></div>
+                    <div class="info-row"><strong>Condition:</strong> <span id="lead-condition">-</span></div>
+                    <div class="info-row"><strong>Target Quantity:</strong> <span id="lead-quantity">-</span></div>
+                    <div class="info-row"><strong>Budget Cap:</strong> <span id="lead-budget">-</span></div>
+                    <div class="info-row"><strong>Location Preference:</strong> <span id="lead-location">-</span></div>
+                    <div class="info-row"><strong>Frequency:</strong> <span id="lead-frequency">-</span></div>
+                </div>
+            </div>
+
+            <!-- Notes & Status Pane -->
+            <div class="modal-action-bar">
+                <div class="form-group flex-2">
+                    <label for="leadStatusChange">Change Lead Status</label>
+                    <select id="leadStatusChange">
+                        <option value="NEW">NEW</option>
+                        <option value="CONTACTED">CONTACTED</option>
+                        <option value="QUALIFIED">QUALIFIED</option>
+                        <option value="MATCHING">MATCHING</option>
+                        <option value="MATCHED">MATCHED</option>
+                        <option value="NEGOTIATING">NEGOTIATING</option>
+                        <option value="PURCHASED">PURCHASED</option>
+                        <option value="LOST">LOST</option>
+                    </select>
+                </div>
+                <div class="form-group flex-1">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-primary" id="saveLeadStatusBtn">Update Status</button>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label for="leadRequirements">Requirements Notes / Details</label>
+                <textarea id="leadRequirements" readonly></textarea>
+            </div>
+
+            <!-- Potential Matches Block -->
+            <div class="potential-matches-container">
+                <div class="section-header">
+                    <h3>Potential Inventory Matches</h3>
+                    <button class="btn btn-secondary" id="triggerMatchEngineBtn">Run Match Engine Scorer</button>
+                </div>
+                <div class="potential-list" id="potentialMatchesList">
+                    <div class="placeholder-row">Run Scorer to discover inventory offerings matching these conditions.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Buyer Details -->
+    <div id="buyerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('buyerModal')">&times;</span>
+            <h2 class="modal-title">Buyer Profile & History</h2>
+            
+            <div class="info-panel">
+                <div class="info-row"><strong>Full Name:</strong> <span id="buyer-name">-</span></div>
+                <div class="info-row"><strong>Company:</strong> <span id="buyer-company">-</span></div>
+                <div class="info-row"><strong>Email:</strong> <span id="buyer-email">-</span></div>
+                <div class="info-row"><strong>Phone:</strong> <span id="buyer-phone">-</span></div>
+                <div class="info-row"><strong>Status:</strong> <span id="buyer-status">-</span></div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 0.5rem 0;">Request Lead History</h3>
+            <div class="table-container mini">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Condition</th>
+                            <th>Budget</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="buyerLeadsHistory">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Supplier Details -->
+    <div id="supplierModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('supplierModal')">&times;</span>
+            <h2 class="modal-title">Supplier Details & Inventory</h2>
+
+            <div class="info-panel">
+                <div class="info-row"><strong>Company:</strong> <span id="supplier-company">-</span></div>
+                <div class="info-row"><strong>Contact:</strong> <span id="supplier-contact">-</span></div>
+                <div class="info-row"><strong>Email:</strong> <span id="supplier-email">-</span></div>
+                <div class="info-row"><strong>Phone:</strong> <span id="supplier-phone">-</span></div>
+                <div class="info-row"><strong>Website:</strong> <span id="supplier-website">-</span></div>
+                <div class="info-row"><strong>Status:</strong> <span id="supplier-status">-</span></div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 0.5rem 0;">Associated Inventory Offerings</h3>
+            <div class="table-container mini">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Condition</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="supplierInventoryList">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Inventory Details -->
+    <div id="inventoryModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('inventoryModal')">&times;</span>
+            <h2 class="modal-title">Inventory Lot Details</h2>
+
+            <div class="info-panel">
+                <div class="info-row"><strong>Title:</strong> <span id="inv-title">-</span></div>
+                <div class="info-row"><strong>Category:</strong> <span id="inv-category">-</span></div>
+                <div class="info-row"><strong>Condition:</strong> <span id="inv-condition">-</span></div>
+                <div class="info-row"><strong>Quantity:</strong> <span id="inv-quantity">-</span></div>
+                <div class="info-row"><strong>Asking Price:</strong> <span id="inv-price">-</span></div>
+                <div class="info-row"><strong>Location:</strong> <span id="inv-location">-</span></div>
+                <div class="info-row"><strong>Status:</strong> <span id="inv-status">-</span></div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 0.5rem 0;">Supplier Information</h3>
+            <div class="info-panel">
+                <div class="info-row"><strong>Company Name:</strong> <span id="inv-supplier-company">-</span></div>
+                <div class="info-row"><strong>Contact Person:</strong> <span id="inv-supplier-contact">-</span></div>
+                <div class="info-row"><strong>Email Address:</strong> <span id="inv-supplier-email">-</span></div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label for="invDescription">Lot Description</label>
+                <textarea id="invDescription" readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Match Pair Detail / Status Action -->
+    <div id="matchModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('matchModal')">&times;</span>
+            <h2 class="modal-title">Match Pair Administration</h2>
+
+            <div class="info-panel">
+                <div class="info-row"><strong>Buyer Lead:</strong> <span id="match-buyer-desc">-</span></div>
+                <div class="info-row"><strong>Inventory Offering:</strong> <span id="match-inv-desc">-</span></div>
+                <div class="info-row"><strong>Status:</strong> <span id="match-current-status">-</span></div>
+            </div>
+
+            <div class="modal-action-bar" style="margin-top: 1.5rem;">
+                <div class="form-group flex-2">
+                    <label for="matchStatusSelect">Transition Status</label>
+                    <select id="matchStatusSelect">
+                        <option value="INITIAL">INITIAL</option>
+                        <option value="REVIEWED">REVIEWED</option>
+                        <option value="PRESENTED">PRESENTED</option>
+                        <option value="ACCEPTED">ACCEPTED</option>
+                        <option value="REJECTED">REJECTED</option>
+                        <option value="EXPIRED">EXPIRED</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 1rem;">
+                <label for="matchNotesInput">Administrative Match Notes</label>
+                <textarea id="matchNotesInput" placeholder="Add details about negotiations, contact dates, or status decisions..."></textarea>
+            </div>
+
+            <button class="btn btn-primary full-width" id="saveMatchStatusBtn" style="margin-top: 1rem;">Save Match Settings</button>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
