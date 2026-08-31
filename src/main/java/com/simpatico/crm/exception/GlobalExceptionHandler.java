@@ -74,6 +74,25 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * Handles JSON parse errors and unreadable HTTP messages (returns HTTP 400).
+     */
+    @ExceptionHandler(org.springframework.http.converter.HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleMessageNotReadable(
+            org.springframework.http.converter.HttpMessageNotReadableException ex,
+            HttpServletRequest request
+    ) {
+        ErrorResponse response = new ErrorResponse(
+                OffsetDateTime.now(),
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                "Malformed JSON request or invalid parameters: " + ex.getMostSpecificCause().getMessage(),
+                request.getRequestURI(),
+                null
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
+
+    /**
      * Catch-all fallback handler for server errors (returns HTTP 500).
      */
     @ExceptionHandler(Exception.class)

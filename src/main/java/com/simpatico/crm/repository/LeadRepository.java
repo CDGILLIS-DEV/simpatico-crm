@@ -3,6 +3,7 @@ package com.simpatico.crm.repository;
 import com.simpatico.crm.entity.Lead;
 import com.simpatico.crm.entity.LeadStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.UUID;
  * Repository interface for managing Lead entities.
  */
 @Repository
-public interface LeadRepository extends JpaRepository<Lead, UUID> {
+public interface LeadRepository extends JpaRepository<Lead, UUID>, JpaSpecificationExecutor<Lead> {
 
     /**
      * Find all leads associated with a specific buyer.
