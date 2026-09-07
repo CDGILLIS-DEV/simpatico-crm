@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpatico Liquidations - Wholesale Inventory Request</title>
-    <!-- Modern Google Typography -->
+    <title>Simpatico Liquidations | Premium Wholesale Inventory & Liquidation Sourcing</title>
+    
+    <!-- Primary Meta Tags & SEO -->
+    <meta name="title" content="Simpatico Liquidations | Premium Wholesale Inventory & Liquidation Sourcing">
+    <meta name="description" content="Connect directly with verified wholesale liquidation packages. Submit your inventory constraints to access surplus electronics, apparel, and general merchandise at deep discount rates.">
+    <meta name="keywords" content="wholesale liquidations, surplus inventory, bulk electronics, overstock apparel, liquidation pallets, B2B inventory sourcing">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://simpaticoliquidations.com/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://simpaticoliquidations.com/">
+    <meta property="og:title" content="Simpatico Liquidations | Premium Wholesale Inventory Sourcing">
+    <meta property="og:description" content="Direct wholesale liquidation inventory sourcing for bulk buyers, distributors, and online retailers.">
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -36,48 +51,193 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
+            padding: 0;
             background-image: 
                 radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 2rem;
-            max-width: 600px;
+        /* Navigation Bar */
+        nav {
+            width: 100%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--card-border);
         }
 
-        header h1 {
+        .logo {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #60a5fa, #a5b4fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-btn {
+            background-color: var(--card-border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: background 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-primary);
+        }
+
+        /* Main Container */
+        main {
+            width: 100%;
+            max-width: 1100px;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #60a5fa, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
         }
 
         header p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Category Grid Section */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-primary);
+        }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: #60a5fa;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             line-height: 1.5;
         }
 
-        .container {
-            width: 100%;
-            max-width: 750px;
+        /* Process Steps Section */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .step-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-primary), #6366f1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        .step-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Form Container */
+        .form-section {
             background-color: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 1.25rem;
             padding: 2.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
             position: relative;
-            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
         }
 
-        .container::before {
+        .form-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -85,6 +245,7 @@
             width: 100%;
             height: 4px;
             background: linear-gradient(90deg, var(--accent-primary), #6366f1);
+            border-radius: 1.25rem 1.25rem 0 0;
         }
 
         form {
@@ -132,7 +293,7 @@
             min-height: 100px;
         }
 
-        /* Hidden Honeypot Field for Spam Protection */
+        /* Hidden Honeypot Field */
         .hidden-honeypot {
             display: none !important;
             visibility: hidden !important;
@@ -182,11 +343,43 @@
             display: block;
         }
 
+        /* FAQ Section */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .faq-item h4 {
+            font-size: 1.1rem;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         footer {
-            margin-top: 2rem;
+            width: 100%;
+            border-top: 1px solid var(--card-border);
+            padding: 2rem;
             text-align: center;
             font-size: 0.875rem;
             color: var(--text-secondary);
+            margin-top: auto;
         }
 
         footer a {
@@ -198,14 +391,22 @@
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
             form {
                 grid-template-columns: 1fr;
             }
             .full-width {
                 grid-column: span 1;
             }
-            .container {
+            .form-section {
                 padding: 1.5rem;
             }
         }
@@ -213,92 +414,173 @@
 </head>
 <body>
 
-    <header>
-        <h1>Simpatico Liquidations</h1>
-        <p>Submit your inventory requirements. Our matching team will connect you with available liquidation inventory packages matching your price constraints and locations.</p>
-    </header>
+    <nav>
+        <a href="#" class="logo">Simpatico Liquidations</a>
+        <ul class="nav-links">
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#process">How It Works</a></li>
+            <li><a href="#request">Submit Request</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <a href="/admin/index.html" class="nav-btn">CRM Portal</a>
+    </nav>
 
-    <div class="container">
-        <form id="publicLeadForm">
-            <div class="form-group">
-                <label for="firstName">First Name *</label>
-                <input type="text" id="firstName" name="firstName" required maxlength="100">
+    <main>
+        <!-- Hero Section -->
+        <header>
+            <h1>Direct Wholesale Liquidation Inventory Sourcing</h1>
+            <p>Connect with verified surplus inventory packages matching your exact budget, target condition, and geographic specifications.</p>
+        </header>
+
+        <!-- Categories Section -->
+        <section id="categories">
+            <h2 class="section-title">Available Liquidation Categories</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Consumer Electronics</h3>
+                    <p>Overstock laptops, tablets, smartphones, audio gear, and refurbished personal electronics from top brand manufacturers.</p>
+                </div>
+                <div class="card">
+                    <h3>Apparel & Accessories</h3>
+                    <p>Customer return and shelf-pull apparel lots, designer footwear, and seasonal fashion inventory sold in bulk pallets.</p>
+                </div>
+                <div class="card">
+                    <h3>Home Goods & Appliances</h3>
+                    <p>Small kitchen appliances, cookware, home furnishings, and seasonal home improvement overstock packages.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label for="lastName">Last Name *</label>
-                <input type="text" id="lastName" name="lastName" required maxlength="100">
+        <!-- Process Section -->
+        <section id="process">
+            <h2 class="section-title">How Our Sourcing Engine Works</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Submit Form</h4>
+                    <p>Provide your target inventory category, budget limit, and preferred location.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>AI Engine Scoring</h4>
+                    <p>Our algorithm evaluates live supplier inventories against your parameters.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Match Assignment</h4>
+                    <p>Matches are assigned and vetted by our wholesale liquidity specialists.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Fulfillment</h4>
+                    <p>Finalize package details, logistics, and bulk purchase agreement.</p>
+                </div>
             </div>
+        </section>
 
-            <div class="form-group">
-                <label for="company">Company Name</label>
-                <input type="text" id="company" name="company" maxlength="150">
+        <!-- Lead Form Section -->
+        <section id="request" class="form-section">
+            <h2 class="section-title" style="margin-bottom: 1.5rem;">Submit Wholesale Inventory Request</h2>
+            <form id="publicLeadForm">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" id="firstName" name="firstName" required maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" id="lastName" name="lastName" required maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="text" id="phone" name="phone" required placeholder="+15551234567" maxlength="20">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Your Location *</label>
+                    <input type="text" id="location" name="location" required placeholder="e.g. Boston, MA" maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="inventoryCategory">Target Category *</label>
+                    <input type="text" id="inventoryCategory" name="inventoryCategory" required placeholder="e.g. ELECTRONICS, CLOTHING" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="inventoryCondition">Condition Requirement *</label>
+                    <input type="text" id="inventoryCondition" name="inventoryCondition" required placeholder="e.g. NEW, RETURNS, USED" maxlength="50">
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">Target Quantity *</label>
+                    <input type="number" id="quantity" name="quantity" required min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Maximum Budget ($) *</label>
+                    <input type="number" id="budget" name="budget" required min="1">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="purchaseFrequency">Purchase Frequency *</label>
+                    <select id="purchaseFrequency" name="purchaseFrequency" required>
+                        <option value="ONCE_OFF">One Time Purchase</option>
+                        <option value="WEEKLY">Weekly Purchases</option>
+                        <option value="MONTHLY">Monthly Purchases</option>
+                        <option value="ONGOING">Ongoing Contract</option>
+                    </select>
+                </div>
+
+                <!-- Honeypot field (hidden from users, bot trap) -->
+                <div class="form-group hidden-honeypot">
+                    <label for="faxNumber">Fax Number</label>
+                    <input type="text" id="faxNumber" name="faxNumber" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="additionalRequirements">Additional Requirements & Delivery Notes</label>
+                    <textarea id="additionalRequirements" name="additionalRequirements" placeholder="Describe any brand restrictions, pallet size constraints, or delivery options..."></textarea>
+                </div>
+
+                <button type="submit" class="full-width">Submit Wholesale Request</button>
+            </form>
+
+            <div id="statusMessage" class="status-message"></div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h4>What types of inventory lots do you match?</h4>
+                    <p>We source overstock, customer returns, shelf-pulls, and factory-refurbished merchandise across Electronics, Apparel, Home Goods, and Hardware.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>What is the typical matching timeframe?</h4>
+                    <p>Our automated matching engine evaluates submission parameters immediately. Vetted matches are typically presented within 24 to 48 hours.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Are there minimum purchase requirements?</h4>
+                    <p>Minimums depend on supplier pallet sizes. Most inventory packages range from single-pallet lots ($1,000+) to full truckload manifests ($50,000+).</p>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <input type="text" id="phone" name="phone" required placeholder="+15551234567">
-            </div>
-
-            <div class="form-group">
-                <label for="location">Your Location *</label>
-                <input type="text" id="location" name="location" required placeholder="e.g. New York, NY" maxlength="200">
-            </div>
-
-            <div class="form-group">
-                <label for="inventoryCategory">Target Category *</label>
-                <input type="text" id="inventoryCategory" name="inventoryCategory" required placeholder="e.g. ELECTRONICS, CLOTHING" maxlength="100">
-            </div>
-
-            <div class="form-group">
-                <label for="inventoryCondition">Condition Requirement *</label>
-                <input type="text" id="inventoryCondition" name="inventoryCondition" required placeholder="e.g. RETURNS, NEW, USED" maxlength="100">
-            </div>
-
-            <div class="form-group">
-                <label for="quantity">Target Quantity *</label>
-                <input type="number" id="quantity" name="quantity" required min="1">
-            </div>
-
-            <div class="form-group">
-                <label for="budget">Maximum Budget ($) *</label>
-                <input type="number" id="budget" name="budget" required min="1">
-            </div>
-
-            <div class="form-group">
-                <label for="purchaseFrequency">Purchase Frequency *</label>
-                <select id="purchaseFrequency" name="purchaseFrequency" required>
-                    <option value="ONE_TIME">One Time Purchase</option>
-                    <option value="WEEKLY">Weekly Purchases</option>
-                    <option value="MONTHLY">Monthly Purchases</option>
-                    <option value="ONGOING">Ongoing Contract</option>
-                </select>
-            </div>
-
-            <!-- Honeypot field (hidden from users, bot traps) -->
-            <div class="form-group hidden-honeypot">
-                <label for="faxNumber">Fax Number</label>
-                <input type="text" id="faxNumber" name="faxNumber" tabindex="-1" autocomplete="off">
-            </div>
-
-            <div class="form-group full-width">
-                <label for="additionalRequirements">Additional Requirements & Notes</label>
-                <textarea id="additionalRequirements" name="additionalRequirements" placeholder="Describe any brand restrictions, package size limits, or delivery instructions..."></textarea>
-            </div>
-
-            <button type="submit" class="full-width">Submit Wholesale Request</button>
-        </form>
-
-        <div id="statusMessage" class="status-message"></div>
-    </div>
+        </section>
+    </main>
 
     <footer>
-        <p>Secured Administrative Interface: <a href="/admin/index.html">CRM Login</a></p>
+        <p>&copy; 2026 Simpatico Liquidations Inc. All rights reserved. | <a href="/admin/index.html">CRM Portal Access</a></p>
     </footer>
 
     <script>
@@ -312,21 +594,24 @@
             const payload = {
                 firstName: document.getElementById('firstName').value.trim(),
                 lastName: document.getElementById('lastName').value.trim(),
-                company: document.getElementById('company').value.trim(),
+                companyName: document.getElementById('company').value.trim(),
                 email: document.getElementById('email').value.trim(),
                 phone: document.getElementById('phone').value.trim(),
-                location: document.getElementById('location').value.trim(),
+                preferredGeographicArea: document.getElementById('location').value.trim(),
                 inventoryCategory: document.getElementById('inventoryCategory').value.trim(),
                 inventoryCondition: document.getElementById('inventoryCondition').value.trim(),
-                quantity: parseInt(document.getElementById('quantity').value, 10),
+                requestedQuantity: parseInt(document.getElementById('quantity').value, 10),
                 budget: parseFloat(document.getElementById('budget').value),
                 purchaseFrequency: document.getElementById('purchaseFrequency').value,
                 additionalRequirements: document.getElementById('additionalRequirements').value.trim(),
                 faxNumber: document.getElementById('faxNumber').value.trim() // Honeypot
             };
 
+            // Dynamically resolve API endpoint: uses relative /api/public/leads (proxied by Netlify or local server)
+            const apiEndpoint = '/api/public/leads';
+
             try {
-                const response = await fetch('/api/public/leads', {
+                const response = await fetch(apiEndpoint, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -338,15 +623,20 @@
 
                 if (response.ok) {
                     statusDiv.className = 'status-message success';
-                    statusDiv.innerText = 'Request submitted successfully! Our matching team has received your wholesale requirements.';
+                    statusDiv.innerText = 'Request submitted successfully! Our wholesale matching team has received your inquiry.';
                     document.getElementById('publicLeadForm').reset();
                 } else {
                     statusDiv.className = 'status-message error';
-                    statusDiv.innerText = data.message || 'Validation failed. Please verify your fields and submit again.';
+                    if (data.errors && Array.isArray(data.errors)) {
+                        const errorMsgs = data.errors.map(err => `${err.field}: ${err.message}`).join(', ');
+                        statusDiv.innerText = `Validation error: ${errorMsgs}`;
+                    } else {
+                        statusDiv.innerText = data.message || 'Validation failed. Please check input parameters and try again.';
+                    }
                 }
             } catch (err) {
                 statusDiv.className = 'status-message error';
-                statusDiv.innerText = 'Network error occurred. Please check your connection and try again.';
+                statusDiv.innerText = 'Network error occurred connecting to matching engine. Please try again.';
             }
         });
     </script>
