@@ -1,644 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simpatico Liquidations | Premium Wholesale Inventory & Liquidation Sourcing</title>
-    
-    <!-- Primary Meta Tags & SEO -->
-    <meta name="title" content="Simpatico Liquidations | Premium Wholesale Inventory & Liquidation Sourcing">
-    <meta name="description" content="Connect directly with verified wholesale liquidation packages. Submit your inventory constraints to access surplus electronics, apparel, and general merchandise at deep discount rates.">
-    <meta name="keywords" content="wholesale liquidations, surplus inventory, bulk electronics, overstock apparel, liquidation pallets, B2B inventory sourcing">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://simpaticoliquidations.com/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://simpaticoliquidations.com/">
-    <meta property="og:title" content="Simpatico Liquidations | Premium Wholesale Inventory Sourcing">
-    <meta property="og:description" content="Direct wholesale liquidation inventory sourcing for bulk buyers, distributors, and online retailers.">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: #111827;
-            --card-border: #1f2937;
-            --accent-primary: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --input-bg: #1f2937;
-            --success-color: #10b981;
-            --error-color: #ef4444;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
-        }
-
-        /* Navigation Bar */
-        nav {
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #60a5fa, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        .nav-btn {
-            background-color: var(--card-border);
-            color: var(--text-primary);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: background 0.2s ease;
-        }
-
-        .nav-btn:hover {
-            background-color: var(--accent-primary);
-        }
-
-        /* Main Container */
-        main {
-            width: 100%;
-            max-width: 1100px;
-            padding: 3rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            gap: 4rem;
-        }
-
-        header {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #60a5fa, #a5b4fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        header p {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
-
-        /* Category Grid Section */
-        .section-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            transition: transform 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-primary);
-        }
-
-        .card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            margin-bottom: 0.75rem;
-            color: #60a5fa;
-        }
-
-        .card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Process Steps Section */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .step-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-primary), #6366f1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin: 0 auto 1rem auto;
-        }
-
-        .step-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .step-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Form Container */
-        .form-section {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 1.25rem;
-            padding: 2.5rem;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-primary), #6366f1);
-            border-radius: 1.25rem 1.25rem 0 0;
-        }
-
-        form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        label {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        input, select, textarea {
-            background-color: var(--input-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: all 0.2s ease-in-out;
-            outline: none;
-            width: 100%;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        /* Hidden Honeypot Field */
-        .hidden-honeypot {
-            display: none !important;
-            visibility: hidden !important;
-        }
-
-        button[type="submit"] {
-            background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
-            color: white;
-            border: none;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.2s ease-in-out, transform 0.1s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
-        }
-
-        button[type="submit"]:hover {
-            opacity: 0.95;
-        }
-
-        button[type="submit"]:active {
-            transform: scale(0.98);
-        }
-
-        .status-message {
-            margin-top: 1.5rem;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            display: none;
-            text-align: center;
-        }
-
-        .status-message.success {
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--success-color);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            display: block;
-        }
-
-        .status-message.error {
-            background-color: rgba(239, 68, 68, 0.1);
-            color: var(--error-color);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            display: block;
-        }
-
-        /* FAQ Section */
-        .faq-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .faq-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 0.75rem;
-            padding: 1.25rem 1.5rem;
-        }
-
-        .faq-item h4 {
-            font-size: 1.1rem;
-            color: #60a5fa;
-            margin-bottom: 0.5rem;
-        }
-
-        .faq-item p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        footer {
-            width: 100%;
-            border-top: 1px solid var(--card-border);
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-top: auto;
-        }
-
-        footer a {
-            color: var(--accent-primary);
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            header h1 {
-                font-size: 2.2rem;
-            }
-            form {
-                grid-template-columns: 1fr;
-            }
-            .full-width {
-                grid-column: span 1;
-            }
-            .form-section {
-                padding: 1.5rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start or Grow Your Wholesale Liquidation Business | Wholesale Liquidation Pallets & Truckloads</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Purchase wholesale liquidation pallets and full truckloads from trusted inventory sources. Find e-commerce inventory, retail liquidation, overstock, and customer returns at competitive prices.">
+  <meta name="keywords" content="wholesale liquidation, liquidation pallets, wholesale pallets, liquidation truckloads, wholesale inventory, buy liquidation pallets, liquidation business, truckloads for sale, wholesale merchandise, reseller inventory, pallet liquidation, e-commerce inventory, retail liquidation, discount merchandise, overstock inventory">
+  <meta name="author" content="Liquidation Logistics Inc.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wholesale Liquidation Pallets & Full Truckloads | Liquidation Logistics">
+  <meta property="og:description" content="Start or grow your resale business. Buy wholesale liquidation pallets and full truckloads from trusted inventory sources at competitive prices.">
+  <meta property="og:image" content="assets/warehouse-pallets.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/main.css">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">Simpatico Liquidations</a>
-        <ul class="nav-links">
-            <li><a href="#categories">Categories</a></li>
-            <li><a href="#process">How It Works</a></li>
-            <li><a href="#request">Submit Request</a></li>
-            <li><a href="#faq">FAQ</a></li>
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar" id="announcement-bar">
+    <p>🚚 <strong>Special Alert:</strong> Truckloads Just Arrived! <a href="#lead-section" class="announcement-link">Reserve Yours Now &rarr;</a></p>
+  </div>
+
+  <!-- Header & Navigation -->
+  <header class="main-header" id="main-header">
+    <div class="header-container">
+      <a href="#" class="logo" id="header-logo">
+        <span class="logo-icon">📦</span>
+        <span class="logo-text">Simpatico<span class="text-accent">Liquidations</span></span>
+      </a>
+      <nav class="main-nav" id="main-navigation" aria-label="Main Navigation">
+        <ul role="list" class="nav-list">
+          <li><a href="#why-us-section" class="nav-link">Why Choose Us</a></li>
+          <li><a href="#truckloads-section" class="nav-link">Truckloads</a></li>
+          <li><a href="#opportunity-section" class="nav-link">Opportunities</a></li>
+          <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
+          <li><a href="#faq-section" class="nav-link">FAQs</a></li>
         </ul>
-        <a href="/admin/index.html" class="nav-btn">CRM Portal</a>
-    </nav>
+      </nav>
+      <div class="header-cta">
+        <a href="#lead-section" class="btn btn-header" id="nav-cta-btn">Get Inventory List</a>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <!-- Hero Section -->
-        <header>
-            <h1>Direct Wholesale Liquidation Inventory Sourcing</h1>
-            <p>Connect with verified surplus inventory packages matching your exact budget, target condition, and geographic specifications.</p>
-        </header>
-
-        <!-- Categories Section -->
-        <section id="categories">
-            <h2 class="section-title">Available Liquidation Categories</h2>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>Consumer Electronics</h3>
-                    <p>Overstock laptops, tablets, smartphones, audio gear, and refurbished personal electronics from top brand manufacturers.</p>
-                </div>
-                <div class="card">
-                    <h3>Apparel & Accessories</h3>
-                    <p>Customer return and shelf-pull apparel lots, designer footwear, and seasonal fashion inventory sold in bulk pallets.</p>
-                </div>
-                <div class="card">
-                    <h3>Home Goods & Appliances</h3>
-                    <p>Small kitchen appliances, cookware, home furnishings, and seasonal home improvement overstock packages.</p>
-                </div>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero-section">
+      <div class="hero-bg-overlay"></div>
+      <div class="hero-container">
+        <div class="hero-content">
+          <span class="badge hero-badge">Premium Wholesale Inventory</span>
+          <h1 class="hero-title" id="hero-main-title">Start or Grow Your Wholesale Liquidation Business</h1>
+          <p class="hero-subtitle">
+            Purchase wholesale liquidation pallets and full truckloads from trusted inventory sources. Whether you’re launching a resale business or expanding your retail or e-commerce operation, we provide quality inventory at competitive prices.
+          </p>
+          <div class="hero-actions">
+            <a href="#lead-section" class="btn btn-primary" id="hero-primary-cta">
+              Get Current Inventory
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+            <a href="#lead-section" class="btn btn-secondary" id="hero-secondary-cta">Request Pricing</a>
+          </div>
+          <div class="hero-trust-badges">
+            <div class="trust-badge">
+              <span class="badge-icon">✔️</span> Verified Sources
             </div>
-        </section>
-
-        <!-- Process Section -->
-        <section id="process">
-            <h2 class="section-title">How Our Sourcing Engine Works</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h4>Submit Form</h4>
-                    <p>Provide your target inventory category, budget limit, and preferred location.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h4>AI Engine Scoring</h4>
-                    <p>Our algorithm evaluates live supplier inventories against your parameters.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h4>Match Assignment</h4>
-                    <p>Matches are assigned and vetted by our wholesale liquidity specialists.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h4>Fulfillment</h4>
-                    <p>Finalize package details, logistics, and bulk purchase agreement.</p>
-                </div>
+            <div class="trust-badge">
+              <span class="badge-icon">⚡</span> Fast Processing
             </div>
-        </section>
-
-        <!-- Lead Form Section -->
-        <section id="request" class="form-section">
-            <h2 class="section-title" style="margin-bottom: 1.5rem;">Submit Wholesale Inventory Request</h2>
-            <form id="publicLeadForm">
-                <div class="form-group">
-                    <label for="firstName">First Name *</label>
-                    <input type="text" id="firstName" name="firstName" required maxlength="50">
-                </div>
-
-                <div class="form-group">
-                    <label for="lastName">Last Name *</label>
-                    <input type="text" id="lastName" name="lastName" required maxlength="50">
-                </div>
-
-                <div class="form-group">
-                    <label for="company">Company Name</label>
-                    <input type="text" id="company" name="company" maxlength="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" name="email" required maxlength="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="text" id="phone" name="phone" required placeholder="+15551234567" maxlength="20">
-                </div>
-
-                <div class="form-group">
-                    <label for="location">Your Location *</label>
-                    <input type="text" id="location" name="location" required placeholder="e.g. Boston, MA" maxlength="100">
-                </div>
-
-                <div class="form-group">
-                    <label for="inventoryCategory">Target Category *</label>
-                    <input type="text" id="inventoryCategory" name="inventoryCategory" required placeholder="e.g. ELECTRONICS, CLOTHING" maxlength="50">
-                </div>
-
-                <div class="form-group">
-                    <label for="inventoryCondition">Condition Requirement *</label>
-                    <input type="text" id="inventoryCondition" name="inventoryCondition" required placeholder="e.g. NEW, RETURNS, USED" maxlength="50">
-                </div>
-
-                <div class="form-group">
-                    <label for="quantity">Target Quantity *</label>
-                    <input type="number" id="quantity" name="quantity" required min="1">
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Maximum Budget ($) *</label>
-                    <input type="number" id="budget" name="budget" required min="1">
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="purchaseFrequency">Purchase Frequency *</label>
-                    <select id="purchaseFrequency" name="purchaseFrequency" required>
-                        <option value="ONCE_OFF">One Time Purchase</option>
-                        <option value="WEEKLY">Weekly Purchases</option>
-                        <option value="MONTHLY">Monthly Purchases</option>
-                        <option value="ONGOING">Ongoing Contract</option>
-                    </select>
-                </div>
-
-                <!-- Honeypot field (hidden from users, bot trap) -->
-                <div class="form-group hidden-honeypot">
-                    <label for="faxNumber">Fax Number</label>
-                    <input type="text" id="faxNumber" name="faxNumber" tabindex="-1" autocomplete="off">
-                </div>
-
-                <div class="form-group full-width">
-                    <label for="additionalRequirements">Additional Requirements & Delivery Notes</label>
-                    <textarea id="additionalRequirements" name="additionalRequirements" placeholder="Describe any brand restrictions, pallet size constraints, or delivery options..."></textarea>
-                </div>
-
-                <button type="submit" class="full-width">Submit Wholesale Request</button>
-            </form>
-
-            <div id="statusMessage" class="status-message"></div>
-        </section>
-
-        <!-- FAQ Section -->
-        <section id="faq">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <h4>What types of inventory lots do you match?</h4>
-                    <p>We source overstock, customer returns, shelf-pulls, and factory-refurbished merchandise across Electronics, Apparel, Home Goods, and Hardware.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>What is the typical matching timeframe?</h4>
-                    <p>Our automated matching engine evaluates submission parameters immediately. Vetted matches are typically presented within 24 to 48 hours.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Are there minimum purchase requirements?</h4>
-                    <p>Minimums depend on supplier pallet sizes. Most inventory packages range from single-pallet lots ($1,000+) to full truckload manifests ($50,000+).</p>
-                </div>
+            <div class="trust-badge">
+              <span class="badge-icon">🌎</span> Nationwide Freight
             </div>
-        </section>
-    </main>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-image-wrapper">
+            <img src="assets/hero-truck.png" alt="Liquidation Logistics freight truck delivering pallets nationwide" width="600" height="400" class="hero-image" id="hero-visual-image">
+            <div class="floating-stat">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Truckloads Shipped</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Simpatico Liquidations Inc. All rights reserved. | <a href="/admin/index.html">CRM Portal Access</a></p>
-    </footer>
+    <!-- Lead Capture Form Section -->
+    <section class="lead-section" id="lead-section">
+      <div class="lead-container">
+        <div class="lead-info">
+          <h2 class="section-title text-light" id="lead-title">Access Our Exclusive Inventory Lists</h2>
+          <p class="section-desc text-muted">
+            Gain immediate access to our current inventory lists, unmanifested pallet loads, and full truckload discount pricing. Complete the secure form to connect with our logistics team.
+          </p>
+          <div class="lead-points">
+            <div class="lead-point-item">
+              <div class="point-icon-box">✓</div>
+              <div>
+                <h3>Receive Daily Inventory Alerts</h3>
+                <p>Get notified the second high-demand overstock and customer return truckloads hit our docks.</p>
+              </div>
+            </div>
+            <div class="lead-point-item">
+              <div class="point-icon-box">✓</div>
+              <div>
+                <h3>Direct Account Rep Access</h3>
+                <p>Work directly with a dedicated liquidation account specialist to build the perfect inventory mix for your store.</p>
+              </div>
+            </div>
+            <div class="lead-point-item">
+              <div class="point-icon-box">✓</div>
+              <div>
+                <h3>Flexible Nationwide Delivery</h3>
+                <p>We source freight shipping quotes from top carriers to negotiate the lowest rates to your warehouse.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <script>
-        document.getElementById('publicLeadForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const statusDiv = document.getElementById('statusMessage');
-            statusDiv.className = 'status-message';
-            statusDiv.style.display = 'none';
+        <div class="lead-form-wrapper">
+          <div class="form-header">
+            <h3>Get Current Liquidation Lists</h3>
+            <p>No credit card required. Free inventory catalog download.</p>
+          </div>
+          <form id="lead-capture-form" class="lead-form" novalidate>
+            <!-- Honeypot field for bot/spam protection -->
+            <div style="display:none;" aria-hidden="true">
+              <label for="fax-number">Fax Number</label>
+              <input type="text" id="fax-number" name="faxNumber" tabindex="-1" autocomplete="off">
+            </div>
 
-            const payload = {
-                firstName: document.getElementById('firstName').value.trim(),
-                lastName: document.getElementById('lastName').value.trim(),
-                companyName: document.getElementById('company').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                preferredGeographicArea: document.getElementById('location').value.trim(),
-                inventoryCategory: document.getElementById('inventoryCategory').value.trim(),
-                inventoryCondition: document.getElementById('inventoryCondition').value.trim(),
-                requestedQuantity: parseInt(document.getElementById('quantity').value, 10),
-                budget: parseFloat(document.getElementById('budget').value),
-                purchaseFrequency: document.getElementById('purchaseFrequency').value,
-                additionalRequirements: document.getElementById('additionalRequirements').value.trim(),
-                faxNumber: document.getElementById('faxNumber').value.trim() // Honeypot
-            };
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="required">*</span></label>
+                <input type="text" id="first-name" name="first_name" required placeholder="John">
+                <span class="error-msg" id="first-name-error">Please enter your first name</span>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="required">*</span></label>
+                <input type="text" id="last-name" name="last_name" required placeholder="Doe">
+                <span class="error-msg" id="last-name-error">Please enter your last name</span>
+              </div>
+            </div>
 
-            // Dynamically resolve API endpoint: uses relative /api/public/leads (proxied by Netlify or local server)
-            const apiEndpoint = '/api/public/leads';
+            <div class="form-group">
+              <label for="business-name">Business Name <span class="optional">(Optional)</span></label>
+              <input type="text" id="business-name" name="business_name" placeholder="e.g. Resell Pros LLC">
+            </div>
 
-            try {
-                const response = await fetch(apiEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="email-address">Email Address <span class="required">*</span></label>
+                <input type="email" id="email-address" name="email" required placeholder="john@example.com">
+                <span class="error-msg" id="email-error">Please enter a valid email address</span>
+              </div>
+              <div class="form-group">
+                <label for="phone-number">Phone Number <span class="required">*</span></label>
+                <input type="tel" id="phone-number" name="phone" required placeholder="(555) 555-5555">
+                <span class="error-msg" id="phone-error">Please enter a valid phone number</span>
+              </div>
+            </div>
 
-                const data = await response.json();
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="city">City <span class="required">*</span></label>
+                <input type="text" id="city" name="city" required placeholder="Dallas">
+                <span class="error-msg" id="city-error">Please enter your city</span>
+              </div>
+              <div class="form-group">
+                <label for="state">State <span class="required">*</span></label>
+                <select id="state" name="state" required>
+                  <option value="" disabled selected>Select State</option>
+                  <option value="AL">Alabama</option><option value="AK">Alaska</option><option value="AZ">Arizona</option>
+                  <option value="AR">Arkansas</option><option value="CA">California</option><option value="CO">Colorado</option>
+                  <option value="CT">Connecticut</option><option value="DE">Delaware</option><option value="FL">Florida</option>
+                  <option value="GA">Georgia</option><option value="HI">Hawaii</option><option value="ID">Idaho</option>
+                  <option value="IL">Illinois</option><option value="IN">Indiana</option><option value="IA">Iowa</option>
+                  <option value="KS">Kansas</option><option value="KY">Kentucky</option><option value="LA">Louisiana</option>
+                  <option value="ME">Maine</option><option value="MD">Maryland</option><option value="MA">Massachusetts</option>
+                  <option value="MI">Michigan</option><option value="MN">Minnesota</option><option value="MS">Mississippi</option>
+                  <option value="MO">Missouri</option><option value="MT">Montana</option><option value="NE">Nebraska</option>
+                  <option value="NV">Nevada</option><option value="NH">New Hampshire</option><option value="NJ">New Jersey</option>
+                  <option value="NM">New Mexico</option><option value="NY">New York</option><option value="NC">North Carolina</option>
+                  <option value="ND">North Dakota</option><option value="OH">Ohio</option><option value="OK">Oklahoma</option>
+                  <option value="OR">Oregon</option><option value="PA">Pennsylvania</option><option value="RI">Rhode Island</option>
+                  <option value="SC">South Carolina</option><option value="SD">South Dakota</option><option value="TN">Tennessee</option>
+                  <option value="TX">Texas</option><option value="UT">Utah</option><option value="VT">Vermont</option>
+                  <option value="VA">Virginia</option><option value="WA">Washington</option><option value="WV">West Virginia</option>
+                  <option value="WI">Wisconsin</option><option value="WY">Wyoming</option>
+                </select>
+                <span class="error-msg" id="state-error">Please select your state</span>
+              </div>
+            </div>
 
-                if (response.ok) {
-                    statusDiv.className = 'status-message success';
-                    statusDiv.innerText = 'Request submitted successfully! Our wholesale matching team has received your inquiry.';
-                    document.getElementById('publicLeadForm').reset();
-                } else {
-                    statusDiv.className = 'status-message error';
-                    if (data.errors && Array.isArray(data.errors)) {
-                        const errorMsgs = data.errors.map(err => `${err.field}: ${err.message}`).join(', ');
-                        statusDiv.innerText = `Validation error: ${errorMsgs}`;
-                    } else {
-                        statusDiv.innerText = data.message || 'Validation failed. Please check input parameters and try again.';
-                    }
-                }
-            } catch (err) {
-                statusDiv.className = 'status-message error';
-                statusDiv.innerText = 'Network error occurred connecting to matching engine. Please try again.';
-            }
-        });
-    </script>
+            <div class="form-group">
+              <label for="buyer-type">Type of Buyer <span class="required">*</span></label>
+              <select id="buyer-type" name="buyer_type" required>
+                <option value="" disabled selected>Please select your business type</option>
+                <option value="starting">Starting a liquidation business</option>
+                <option value="retail">Retail store owner</option>
+                <option value="amazon">Amazon seller</option>
+                <option value="ebay">eBay seller</option>
+                <option value="flea_market">Flea market seller</option>
+                <option value="bin_store">Bin store owner</option>
+                <option value="discount_store">Discount store</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-msg" id="buyer-type-error">Please select a buyer profile</span>
+            </div>
+
+            <div class="form-group">
+              <span class="checkbox-group-title">Interested In <span class="required">*</span></span>
+              <div class="checkbox-grid" role="group" aria-labelledby="checkbox-group-label">
+                <span id="checkbox-group-label" class="sr-only">Inventory Interests</span>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="interest" value="Individual Pallets">
+                  <span>Individual Pallets</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="interest" value="Full Truckloads">
+                  <span>Full Truckloads</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="interest" value="Mixed Merchandise">
+                  <span>Mixed Merchandise</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="interest" value="Customer Returns">
+                  <span>Customer Returns</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="interest" value="Overstock">
+                  <span>Overstock</span>
+                </label>
+              </div>
+              <span class="error-msg" id="interest-error">Please select at least one interest area</span>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="estimated-budget">Estimated Budget <span class="required">*</span></label>
+                <select id="estimated-budget" name="estimated_budget" required>
+                  <option value="" disabled selected>Select Budget Range</option>
+                  <option value="under_5k">Under $5,000</option>
+                  <option value="5k_15k">$5,000 - $15,000</option>
+                  <option value="15k_50k">$15,000 - $50,000</option>
+                  <option value="50k_plus">$50,000+</option>
+                </select>
+                <span class="error-msg" id="budget-error">Please select your estimated budget</span>
+              </div>
+              <div class="form-group">
+                <label for="contact-method">Preferred Contact Method <span class="required">*</span></label>
+                <select id="contact-method" name="contact_method" required>
+                  <option value="" disabled selected>Select Contact Option</option>
+                  <option value="email">Email</option>
+                  <option value="phone">Phone Call</option>
+                  <option value="sms">Text Message (SMS)</option>
+                </select>
+                <span class="error-msg" id="contact-error">Please select a contact method</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" id="form-submit-btn">
+              Get My Inventory List
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+            <p class="form-privacy-note">🔒 We value your privacy. Your information is secured and never shared.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-us-section" id="why-us-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">The Wholesale Advantage</span>
+          <h2 class="section-title text-dark">Why Purchase From Simpatico Liquidations?</h2>
+          <p class="section-desc">We connect resellers directly to verified manufacturing overstocks, wholesale distributors, and retail return pipelines.</p>
+        </div>
+        
+        <div class="features-grid">
+          <!-- Card 1 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">💰</div>
+            <h3>Wholesale Pricing</h3>
+            <p>Purchase pallets and truckloads at deeply discounted wholesale liquidation prices.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">🚛</div>
+            <h3>Full Truckloads Available</h3>
+            <p>Get maximum volume pricing with complete full truckloads delivered direct to your retail location, warehouse, or store.</p>
+          </div>
+          <!-- Card 3 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">📦</div>
+            <h3>Mixed &amp; Category Loads</h3>
+            <p>Choose from mixed inventory pallets or specific, curated loads based on category, demand, and quality grading.</p>
+          </div>
+          <!-- Card 4 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">🛒</div>
+            <h3>Retailer &amp; Seller Ready</h3>
+            <p>Optimized lots crafted specifically for Amazon FBA, eBay, local bin stores, discount shops, and export operations.</p>
+          </div>
+          <!-- Card 5 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">🛡️</div>
+            <h3>Competitive Pricing</h3>
+            <p>We analyze historical pricing matrices to offer the most lucrative price-to-value ratio on all liquidation listings.</p>
+          </div>
+          <!-- Card 6 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">🤝</div>
+            <h3>Reliable Inventory Sources</h3>
+            <p>Direct supply contracts with top-tier national retailers ensure consistent quality, grading, and volume.</p>
+          </div>
+          <!-- Card 7 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">⚡</div>
+            <h3>Fast Order Processing</h3>
+            <p>Our dedicated operations team handles invoicing and warehouse coordination rapidly to minimize turnaround times.</p>
+          </div>
+          <!-- Card 8 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">🗺️</div>
+            <h3>Nationwide Availability</h3>
+            <p>With multiple distribution points across the country, we ship efficiently to any commercial address in the United States.</p>
+          </div>
+          <!-- Card 9 -->
+          <div class="feature-card">
+            <div class="feature-icon bg-navy-accent">📞</div>
+            <h3>Excellent Customer Support</h3>
+            <p>You are never left in the dark. Your dedicated manager handles your logistics from payment confirmation to final delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Truckload Section -->
+    <section class="truckloads-section" id="truckloads-section">
+      <div class="truckloads-container">
+        <div class="truckloads-visual">
+          <img src="assets/warehouse-pallets.png" alt="Stacked and wrapped liquidation pallets ready for truckload loading" width="600" height="400" class="truckloads-image" id="truckload-visual-image">
+        </div>
+        <div class="truckloads-content">
+          <span class="badge badge-accent">Bulk Volume Savings</span>
+          <h2 class="section-title text-light" id="truckloads-main-title">Full Truckloads Ready for Purchase</h2>
+          <p class="section-desc text-muted">
+            For experienced buyers, retail store networks, and high-volume online resellers, purchasing complete truckloads offers the absolute lowest unit cost. By eliminating individual pallet breakdown, shipping bulk inventory dramatically increases profit potential.
+          </p>
+          <p class="truckload-highlight">Our liquidation truckloads are optimized and structured for:</p>
+          <ul class="truckloads-use-list" role="list">
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Retail Stores &amp; Outlets</strong>
+                <p>Consistently restock shelves with fresh off-price overstock merchandise.</p>
+              </div>
+            </li>
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Online Resellers (Amazon, eBay, Poshmark)</strong>
+                <p>Process large bundles of merchandise to scale listing numbers easily.</p>
+              </div>
+            </li>
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Bin Stores &amp; Liquidation Outlets</strong>
+                <p>Generate buzz with massive product volumes ideal for bins and blowout tables.</p>
+              </div>
+            </li>
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Export Businesses</strong>
+                <p>High-volume containers loaded and organized for global logistics channels.</p>
+              </div>
+            </li>
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Discount Stores &amp; Dollar Shops</strong>
+                <p>Procure brand name general merchandise at fractions of wholesale cost.</p>
+              </div>
+            </li>
+            <li>
+              <span class="checkmark">✔</span>
+              <div>
+                <strong>Auction Companies</strong>
+                <p>Break down bulk shipments into smaller lots for maximum localized returns.</p>
+              </div>
+            </li>
+          </ul>
+          <div class="truckloads-action-box">
+            <a href="#lead-section" class="btn btn-accent" id="truckloads-cta-btn">Inquire About Truckloads</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Transportation Section -->
+    <section class="transportation-section" id="transportation-section">
+      <div class="transport-container">
+        <div class="transport-content">
+          <div class="transport-badge">🚚 National Logistics Network</div>
+          <h2 class="section-title text-dark" id="transport-title">Transportation Available</h2>
+          <p class="transport-message">
+            Need delivery? We can coordinate transportation after your purchase is complete. Shipping arrangements and transportation costs can be added upon completed purchases, making it easy to receive your inventory anywhere in the United States. Our team will help determine the most efficient and cost-effective freight solution for your order.
+          </p>
+          <div class="transport-stats">
+            <div class="t-stat">
+              <span class="t-number">50</span>
+              <span class="t-label">States Covered</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-number">24-48h</span>
+              <span class="t-label">Freight Dispatch</span>
+            </div>
+            <div class="t-stat">
+              <span class="t-number">100%</span>
+              <span class="t-label">Insured Loads</span>
+            </div>
+          </div>
+        </div>
+        <div class="transport-visual">
+          <img src="assets/forklift-logistics.png" alt="Forklift loading wholesale pallet onto freight shipping container" width="600" height="400" class="transport-image" id="transport-visual-image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Opportunity Section -->
+    <section class="opportunity-section" id="opportunity-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Unlocking Growth</span>
+          <h2 class="section-title text-dark">Maximize Your Profit Potential</h2>
+          <p class="section-desc">Discover how sourcing inventory through Liquidation Logistics empowers entrepreneurs and businesses to scale profitability.</p>
+        </div>
+
+        <div class="opportunity-grid">
+          <div class="opp-info-card">
+            <h3>Empowering Business Owners</h3>
+            <p>Liquidation merchandise provides the backbone for modern reselling. By purchasing inventory at up to 90% off retail pricing, you unlock structural advantages that regular distributors cannot compete with.</p>
+            <ul class="opp-benefits-list" role="list">
+              <li>🚀 <strong>Start a wholesale liquidation business:</strong> Act as a regional distributor, selling individual pallets to local resellers.</li>
+              <li>💻 <strong>Launch an online resale business:</strong> Build a highly profitable store on eBay, Amazon FBA, or Mercari.</li>
+              <li>🏬 <strong>Expand an existing retail store:</strong> Mix in liquidation items for blowout sales to draw foot traffic.</li>
+              <li>📉 <strong>Increase inventory at lower costs:</strong> Purchase larger quantities without straining capital.</li>
+              <li>📈 <strong>Improve profit margins:</strong> Buy low, sell high, and reinvest profits to scale your volume.</li>
+            </ul>
+          </div>
+
+          <div class="opp-categories-card">
+            <h3>Sought-After Inventory Categories</h3>
+            <p>Choose from our rotating stock of highly liquid category inventories:</p>
+            <div class="categories-tag-cloud">
+              <span class="cat-tag">General Merchandise</span>
+              <span class="cat-tag">Home Goods</span>
+              <span class="cat-tag">Electronics</span>
+              <span class="cat-tag">Apparel</span>
+              <span class="cat-tag">Toys</span>
+              <span class="cat-tag">Tools</span>
+              <span class="cat-tag">Small Appliances</span>
+              <span class="cat-tag">Health &amp; Beauty</span>
+              <span class="cat-tag">Seasonal Products</span>
+            </div>
+            <div class="lead-link-wrapper">
+              <a href="#lead-section" class="inline-cta-link">Request available category lists &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge badge-accent">Success Awaits!</span>
+          <h2 class="section-title text-light">Get Started Today</h2>
+          <p class="section-desc text-muted">Business owners JUST LIKE YOU have scaled their operations using our wholesale liquidation inventory.</p>
+        </div>
+        <div class="final-cta-actions">
+          <a href="#lead-section" class="btn btn-accent btn-large" id="final-inquiry-btn">
+            Start
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq-section">
+      <div class="container-small">
+        <div class="section-header">
+          <span class="badge">Got Questions?</span>
+          <h2 class="section-title text-dark">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about purchasing liquidation pallets and organizing freight.</p>
+        </div>
+
+        <div class="faq-accordion-wrapper">
+          <!-- Item 1 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q1">
+              <span>How do I buy a truckload?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q1">
+              <p>Buying a truckload is simple. Start by submitting the inventory inquiry form above to receive our current load manifest sheets. Once you select a truckload, your account manager will issue a proforma invoice. Once payment is finalized via wire transfer, the warehouse will prep the load, and transportation coordinates will be locked in.</p>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q2">
+              <span>What types of inventory are available?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q2">
+              <p>We source a wide variety of merchandise, including retail customer returns, factory overstocks, shelf-pulls, and store closeouts. Popular categories include general merchandise, apparel, home goods, consumer electronics, small appliances, and seasonal tools.</p>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q3">
+              <span>Do you ship nationwide?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q3">
+              <p>Yes, we coordinate freight shipments to all 50 states within the USA. Whether you have a commercial warehouse with a loading dock, a retail storefront, or require a residential delivery with a liftgate service, we can accommodate your needs.</p>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q4">
+              <span>Can transportation be arranged?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q4">
+              <p>Absolutely. We handle all logistics scheduling. Our deep network of freight carriers allows us to source the most competitive delivery rates. Alternatively, if you have your own fleet or preferred freight broker, you can arrange self-pickup from our distribution facilities.</p>
+            </div>
+          </div>
+          <!-- Item 5 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q5">
+              <span>Are manifests available?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q5">
+              <p>Yes. Manifests are provided for specific overstock and high-grade loads, detailing UPC codes, item descriptions, and retail pricing models. Please note that raw returns or mixed general merchandise truckloads are often sold as unmanifested, which is reflected in their significantly lower prices.</p>
+            </div>
+          </div>
+          <!-- Item 6 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q6">
+              <span>What payment methods do you accept?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q6">
+              <p>Due to the high volume and discount nature of liquidation transactions, we primarily accept Bank Wire Transfers and ACH payments. Certified bank checks may also be accepted with manager approval prior to logistics release.</p>
+            </div>
+          </div>
+          <!-- Item 7 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false" id="faq-q7">
+              <span>How quickly can orders ship?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-panel" aria-labelledby="faq-q7">
+              <p>Standard orders and loads are processed and prepared for shipping within 24 to 48 hours of payment verification. Freight transit times depend on the destination state, typically arriving within 3 to 7 business days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Call-to-Action -->
+    <section class="final-cta-section" id="final-cta-section">
+      <div class="final-cta-overlay"></div>
+      <div class="container">
+        <h2 class="final-cta-title" id="final-cta-main-title">Ready to Build Your Inventory?</h2>
+        <p class="final-cta-text">
+          Request current inventory, pricing, and available truckloads today. Our team will help you find the right inventory for your business goals.
+        </p>
+        <div class="final-cta-actions">
+          <a href="#lead-section" class="btn btn-accent btn-large" id="final-inquiry-btn">
+            Request Available Inventory
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="main-footer" id="main-footer">
+    <div class="footer-container">
+      <div class="footer-brand-info">
+        <a href="#" class="logo" id="footer-logo">
+          <span class="logo-icon">📦</span>
+          <span class="logo-text text-light">Simpatico<span class="text-accent">Liquidations</span></span>
+        </a>
+        <p class="brand-pitch">
+          Connecting retailers, e-commerce sellers, and discount stores to bulk liquidation inventory solutions nationwide.
+        </p>
+        <ul class="contact-details" role="list">
+          <li class="contact-item">
+            <span class="c-icon">📞</span>
+            <a href="tel:+14703740003" class="contact-link" id="footer-phone-link">+1 (470) 374-0003</a>
+          </li>
+          <li class="contact-item">
+            <span class="c-icon">✉️</span>
+            <a href="mailto:sales@simpaticoliquidations.com" class="contact-link" id="footer-email-link">sales@simpaticoliquidations.com</a>
+          </li>
+          <li class="contact-item">
+            <span class="c-icon">⏰</span>
+            <span class="contact-text">Mon - Fri: 8:00 AM - 5:00 PM EST</span>
+          </li>
+        </ul>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook Link" class="social-link">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z"/></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn Link" class="social-link">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter X Link" class="social-link">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-form-wrapper">
+        <h4>Have Questions? Drop Us a Line</h4>
+        <form id="footer-contact-form" class="footer-contact-form" novalidate>
+          <div class="form-group">
+            <label for="footer-name">Name <span class="required">*</span></label>
+            <input type="text" id="footer-name" name="footer_name" required placeholder="Your Name">
+            <span class="error-msg" id="footer-name-error">Please enter your name</span>
+          </div>
+          <div class="form-group">
+            <label for="footer-email">Email <span class="required">*</span></label>
+            <input type="email" id="footer-email" name="footer_email" required placeholder="your.email@example.com">
+            <span class="error-msg" id="footer-email-error">Please enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label for="footer-message">Message <span class="required">*</span></label>
+            <textarea id="footer-message" name="footer_message" required rows="3" placeholder="How can we help your business?"></textarea>
+            <span class="error-msg" id="footer-message-error">Please enter your message</span>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="footer-submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-container">
+        <p class="copyright">Simpatico Liquidations is owned and operated by Simpatico Logistic Services LLC. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="legal-link" id="privacy-link">Privacy Policy</a>
+          <a href="#" class="legal-link" id="terms-link">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal success popups -->
+  <div class="modal-overlay" id="success-modal" aria-hidden="true" role="dialog">
+    <div class="modal-card">
+      <div class="modal-success-icon">✓</div>
+      <h3 class="modal-title">Registration Successful!</h3>
+      <p class="modal-text">Your request has been received. One of our dedicated wholesale account specialists will email you our current inventory sheets and contact you shortly.</p>
+      <button class="btn btn-primary" id="close-modal-btn">Close</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
