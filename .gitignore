@@ -1,7 +1,18 @@
+# Maven Build Artifacts
 target/
 !.mvn/wrapper/maven-wrapper.jar
 
-# IDEs and editors
+# Environment files & Local Configuration Secrets
+.env
+.env.*
+!.env.example
+*.env
+*.local
+*.pem
+*.key
+*.p12
+
+# IDEs and Editors
 .idea/
 *.iml
 *.ipr

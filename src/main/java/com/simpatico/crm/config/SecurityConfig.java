@@ -41,7 +41,7 @@ public class SecurityConfig {
             .securityMatcher("/**")
             .authorizeHttpRequests(auth -> auth
                 // Public resources and static files
-                .requestMatchers("/", "/index.html", "/favicon.ico", "/error", "/api/health").permitAll()
+                .requestMatchers("/", "/index.html", "/favicon.ico", "/error", "/api/health", "/actuator/health", "/actuator/info").permitAll()
                 // Public landing page lead submission
                 .requestMatchers("/api/public/**").permitAll()
                 // Administrative paths and APIs require ADMIN role

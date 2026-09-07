@@ -1,44 +1,75 @@
 spring:
+  application:
+    name: simpatico-crm
+
   datasource:
-    # Strictly require environment variables in production, with no defaults
+    driver-class-name: org.postgresql.Driver
+    # Production database credentials strictly sourced from environment variables with no fallback secrets
     url: ${SPRING_DATASOURCE_URL}
     username: ${SPRING_DATASOURCE_USERNAME}
     password: ${SPRING_DATASOURCE_PASSWORD}
+    hikari:
+      pool-name: SimpaticoHikariCP
+      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE:10}
+      minimum-idle: ${SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE:5}
+      idle-timeout: ${SPRING_DATASOURCE_HIKARI_IDLE_TIMEOUT:300000}
+      connection-timeout: ${SPRING_DATASOURCE_HIKARI_CONNECTION_TIMEOUT:20000}
+      max-lifetime: ${SPRING_DATASOURCE_HIKARI_MAX_LIFETIME:1800000}
+
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      # Enforce validation against Flyway migrations; auto-generation is strictly forbidden in production
+      # DDL auto-generation is strictly forbidden in production; validate against Flyway migrations
       ddl-auto: validate
     show-sql: false
     properties:
       hibernate:
         format_sql: false
 
-  # Constraint limits to block oversized request payloads (DoS protection)
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    validate-on-migrate: true
+
+  # DoS protection payload limits
   servlet:
     multipart:
       max-file-size: 2MB
       max-request-size: 2MB
 
 server:
+  port: ${PORT:8080}
   max-http-request-header-size: 16KB
   servlet:
     session:
       cookie:
-        # Prevent client-side scripts from reading authentication session cookies (XSS mitigation)
         http-only: true
-        # Enforce cookie delivery over SSL/TLS channels only (MITM mitigation)
         secure: true
+        same-site: LAX
 
-# Logging safety guidelines - do not print SQL parameter bindings containing PII or tokens
+app:
+  cors:
+    # Production CORS allows explicit production domain and subdomains only (never wildcard *)
+    allowed-origins: ${ALLOWED_ORIGINS:https://simpaticoliquidations.com,https://www.simpaticoliquidations.com}
+  rate-limiting:
+    enabled: true
+    requests-per-minute: ${RATE_LIMITING_LIMIT:10}
+
+# Actuator configuration ensuring sensitive internal details are hidden publicly
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: never
+
+# Production logging rules - suppress PII and SQL parameter bindings
 logging:
   level:
-    org:
-      springframework:
-        web: WARN
-        security: INFO
-      hibernate:
-        SQL: WARN
-        type:
-          descriptor:
-            sql:
-              BasicBinder: WARN
+    root: INFO
+    org.springframework.web: WARN
+    org.springframework.security: WARN
+    org.hibernate.SQL: WARN
+    org.hibernate.type.descriptor.sql.BasicBinder: WARN

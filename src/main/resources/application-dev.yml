@@ -1,9 +1,38 @@
 spring:
+  application:
+    name: simpatico-crm
+
   datasource:
+    driver-class-name: org.postgresql.Driver
     url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/simpatico_crm}
     username: ${SPRING_DATASOURCE_USERNAME:darnell}
     password: ${SPRING_DATASOURCE_PASSWORD:postgres}
+
   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+
+app:
+  cors:
+    allowed-origins: ${ALLOWED_ORIGINS:http://localhost:3000,http://localhost:8080}
+  rate-limiting:
+    enabled: true
+    requests-per-minute: ${RATE_LIMITING_LIMIT:10}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always
