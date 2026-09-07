@@ -8,5 +8,7 @@ public enum LeadSource {
     ORGANIC_SEARCH,
     DIRECT,
     REFERRAL,
+    WEBSITE,
     OTHER
 }
+
