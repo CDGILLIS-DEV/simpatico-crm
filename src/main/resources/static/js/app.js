@@ -225,6 +225,9 @@ function initLeadFormValidation() {
         });
 
         if (response.ok) {
+          if (typeof window.trackLeadConversion === 'function') {
+            window.trackLeadConversion();
+          }
           showSuccessModal(
             'Registration Successful!',
             'Your inventory request has been received. A liquidation account specialist will email you our active manifest lists and contact you shortly.'
