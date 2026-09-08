@@ -40,8 +40,8 @@ public class SecurityConfig {
         http
             .securityMatcher("/**")
             .authorizeHttpRequests(auth -> auth
-                // Public resources and static files
-                .requestMatchers("/", "/index.html", "/favicon.ico", "/error", "/api/health", "/actuator/health", "/actuator/info").permitAll()
+                // Public resources, static files, and SEO content engine pages
+                .requestMatchers("/", "/index.html", "/robots.txt", "/sitemap.xml", "/favicon.ico", "/error", "/styles/**", "/js/**", "/assets/**", "/resources/**", "/api/health", "/actuator/health", "/actuator/info").permitAll()
                 // Public landing page lead submission
                 .requestMatchers("/api/public/**").permitAll()
                 // Administrative paths and APIs require ADMIN role
