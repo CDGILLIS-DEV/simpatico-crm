@@ -38,4 +38,9 @@ public interface MatchRepository extends JpaRepository<MatchRecord, UUID> {
      */
     @org.springframework.data.jpa.repository.EntityGraph(attributePaths = {"lead", "lead.buyer", "inventory", "inventory.supplier"})
     Optional<MatchRecord> findByLeadIdAndInventoryId(UUID leadId, UUID inventoryId);
+
+    /**
+     * Delete all match records associated with a specific Lead.
+     */
+    void deleteByLeadId(UUID leadId);
 }

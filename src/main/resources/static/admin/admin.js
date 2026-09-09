@@ -214,7 +214,10 @@ async function loadLeads() {
                     <td>${lead.inventoryCondition}</td>
                     <td>$${lead.budget ? lead.budget.toLocaleString() : '0'}</td>
                     <td>${getStatusBadge(lead.status)}</td>
-                    <td><button class="btn btn-secondary btn-small" onclick="openLeadModal('${lead.id}')">Manage</button></td>
+                    <td>
+                        <button class="btn btn-secondary btn-small" onclick="openLeadModal('${lead.id}')">Manage</button>
+                        <button class="btn btn-danger btn-small" style="background-color: #ef4444; color: white; border: none; padding: 0.3rem 0.6rem; border-radius: 4px; font-weight: 600; cursor: pointer; margin-left: 0.3rem;" onclick="deleteLeadDirect('${lead.id}')">Delete</button>
+                    </td>
                 `;
                 tableBody.appendChild(tr);
             });
@@ -441,6 +444,12 @@ async function openLeadModal(leadId) {
         // Bind update status button
         document.getElementById('saveLeadStatusBtn').onclick = () => saveLeadStatus(leadId);
 
+        // Bind delete button
+        const delBtn = document.getElementById('deleteLeadModalBtn');
+        if (delBtn) {
+            delBtn.onclick = () => deleteLeadDirect(leadId);
+        }
+
         // Bind Match Engine trigger
         document.getElementById('triggerMatchEngineBtn').onclick = () => runMatchEngine(leadId);
 
@@ -448,6 +457,30 @@ async function openLeadModal(leadId) {
         document.getElementById('leadModal').classList.add('active');
     } catch (err) {
         alert('Failed to load Lead details from server.');
+    }
+}
+
+async function deleteLeadDirect(leadId) {
+    if (!confirm('Are you sure you want to permanently delete this lead and its stored data from the database?')) {
+        return;
+    }
+    try {
+        const res = await fetch(`/api/leads/${leadId}`, {
+            method: 'DELETE',
+            headers: getCsrfHeaders()
+        });
+        if (res.ok) {
+            alert('Lead record permanently deleted from database.');
+            const modal = document.getElementById('leadModal');
+            if (modal) modal.classList.remove('active');
+            loadLeads();
+            loadDashboardData();
+        } else {
+            alert('Failed to delete lead from server.');
+        }
+    } catch (err) {
+        console.error('Failed to delete lead', err);
+        alert('Error communicating with server during lead deletion.');
     }
 }
 

@@ -80,4 +80,13 @@ public class LeadController {
         LeadResponse updated = leadService.updateLeadStatus(id, request.getStatus());
         return ResponseEntity.ok(updated);
     }
+
+    /**
+     * DELETE /api/leads/{id} : Permanently delete a lead entry.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteLead(@PathVariable UUID id) {
+        leadService.deleteLead(id);
+        return ResponseEntity.noContent().build();
+    }
 }

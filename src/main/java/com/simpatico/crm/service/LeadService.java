@@ -57,4 +57,11 @@ public interface LeadService {
      * @return the updated Lead response.
      */
     LeadResponse updateLeadStatus(UUID id, LeadStatus status);
+
+    /**
+     * Delete a Lead by its ID.
+     *
+     * @param id the unique ID of the lead to delete.
+     */
+    void deleteLead(UUID id);
 }

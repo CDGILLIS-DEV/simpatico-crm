@@ -11,6 +11,7 @@ import com.simpatico.crm.exception.ResourceNotFoundException;
 import com.simpatico.crm.mapper.LeadMapper;
 import com.simpatico.crm.repository.BuyerRepository;
 import com.simpatico.crm.repository.LeadRepository;
+import com.simpatico.crm.repository.MatchRepository;
 import jakarta.persistence.criteria.Predicate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -33,6 +34,7 @@ public class LeadServiceImpl implements LeadService {
 
     private final LeadRepository leadRepository;
     private final BuyerRepository buyerRepository;
+    private final MatchRepository matchRepository;
     private final LeadMapper leadMapper;
 
     @Override
@@ -78,6 +80,14 @@ public class LeadServiceImpl implements LeadService {
         lead.setStatus(status);
         Lead updated = leadRepository.save(lead);
         return leadMapper.toResponse(updated);
+    }
+
+    @Override
+    public void deleteLead(UUID id) {
+        Lead lead = leadRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Lead with ID '" + id + "' not found"));
+        matchRepository.deleteByLeadId(id);
+        leadRepository.delete(lead);
     }
 
     /**
