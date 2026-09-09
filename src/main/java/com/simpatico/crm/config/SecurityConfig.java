@@ -54,7 +54,7 @@ public class SecurityConfig {
                 .permitAll()
             )
             .logout(logout -> logout
-                .logoutUrl("/admin/logout")
+                .logoutRequestMatcher(new org.springframework.security.web.util.matcher.AntPathRequestMatcher("/admin/logout"))
                 .logoutSuccessUrl("/index.html")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
@@ -63,7 +63,7 @@ public class SecurityConfig {
             .csrf(csrf -> csrf
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .csrfTokenRequestHandler(requestHandler)
-                .ignoringRequestMatchers("/api/public/**")
+                .ignoringRequestMatchers("/api/public/**", "/admin/logout")
             )
             .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
             .headers(headers -> headers
