@@ -235,8 +235,12 @@ function initLeadFormValidation() {
           form.reset();
         } else {
           const errData = await response.json().catch(() => ({}));
-          const msg = errData.message || errData.error || 'Submission failed. Please check your information and try again.';
-          alert(`Error submitting request: ${msg}`);
+          let msg = errData.message || errData.error || 'Submission failed. Please check your information and try again.';
+          if (Array.isArray(errData.errors) && errData.errors.length > 0) {
+            const detailMsgs = errData.errors.map(e => e.message || `${e.field} is invalid`).join('\n• ');
+            msg = `Validation failed:\n• ${detailMsgs}`;
+          }
+          alert(`Error submitting request:\n${msg}`);
         }
       } catch (err) {
         console.error('Lead submission failed:', err);
